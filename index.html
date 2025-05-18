@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mr.Developer | Mr.Krishna Gupta</title>
+  <!-- Linking Google Fonts for Icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <link rel="stylesheet" href="style.css">
+  <!-- Add the font-awesome link for Instagram button -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+
+  <div class="dynamic-island" id="dynamicIsland">
+    <div class="island-content">
+      <span>🎵 Tap for Cool Actions</span>
+    </div>
+    <div class="island-options">
+      <button onclick="setMeditationAlarm()">Reminders</button>
+      <button onclick="playBhajans()">🎵 Playlist</button>
+      <button onclick="liveRamMandirDarshan()">🌸 Live Ram Mandir Darshan</button>
+    </div>
+  </div>
+
+  <!-- Header Section -->
+  <header class="header">
+    <h1 class="title">🚩 Jai Shree Ram 🚩</h1>
+    <h1 class="title">I am Mr.Developer, Your GPT Expert!</h1>
+    <p class="subtitle">Bharat Ka Pehla A.I Model </p>
+    <ul class="suggestion-list">
+      <li class="suggestion">
+        <h4 class="text">Guide me to organize a spiritual evening with my close friends under ₹1000.</h4>
+        <span class="icon material-symbols-rounded">draw</span>
+      </li>
+      <li class="suggestion">
+        <h4 class="text">What lessons from the Ramayana can help me build confidence in speaking?</h4>
+        <span class="icon material-symbols-rounded">lightbulb</span>
+      </li>
+      <li class="suggestion">
+        <h4 class="text">Find me the latest updates in the tech world, O Ram.</h4>
+        <span class="icon material-symbols-rounded">explore</span>
+      </li>
+      <li class="suggestion">
+        <h4 class="text">Write a JavaScript function to find peace and sum values in an array.</h4>
+        <span class="icon material-symbols-rounded">code</span>
+      </li>
+    </ul>
+  </header>
+
+  <!-- Chat Header -->
+  <header class="chat-header">
+    <div class="site-branding">
+      <img src="https://i.ibb.co/yBb7R1Fy/Chat-GPT-Image-Apr-20-2025-01-04-22-PM.png" alt="Mr.Developer Logo" class="site-logo">
+      <span class="site-name">Mr.Developer</span>
+    </div>
+  </header>
+
+  <!-- Instagram Button -->
+  <div class="buttons-container">
+    <a href="https://www.instagram.com/official_krishna_gupta_81" class="instagram-button">
+      <i class="fab fa-instagram"></i>
+    </a>
+  </div>
+
+  <!-- Popup Modal for Developer Info -->
+  <div class="popup" id="popup">
+    <div class="popup-content">
+      <span class="close" id="close-popup">&times;</span>
+      <h2>About the Devotee</h2>
+      <img src="https://lh3.googleusercontent.com/-5N_b58bc0jI/AAAAAAAAAAI/AAAAAAAAAAA/ALKGfklBavBya9Gvfsk58L0ETkKn7FRt1w/photo.jpg?sz=46" alt="Developer Image" class="developer-image">
+      <p>Namaste! I'm Krishna Gupta, a dedicated developer creating tech with devotion, in collaboration with Google Inc.</p>
+      <p>Discover my journey, creations, and spiritual-tech projects right here...</p>
+    </div>
+  </div>
+
+  <!-- Chat Container / Messages List -->
+  <div class="chat-list"></div>
+
+  <!-- Typing Area for Chat -->
+  <div class="typing-area">
+    <form action="#" class="typing-form">
+      <div class="input-wrapper">
+        <div class="input-wrapper">
+          <input type="text" placeholder="Speak your query or code..." class="typing-input" id="text-input" required />
+          <button type="button" id="voice-to-text-button" class="icon material-symbols-rounded">mic</button>
+          <button type="submit" id="send-message-button" class="icon material-symbols-rounded">send</button>
+        </div>
+        
+        <span id="theme-toggle-button" class="icon material-symbols-rounded">light_mode</span>
+        <span id="delete-chat-button" class="icon material-symbols-rounded">delete</span>
+      </div>
+    </form>
+
+    
+
+    <p class="disclaimer-text">
+      Mr.Developer may show limited information — always verify facts. Learn more at g.dev/mrgoogleboy. 🙏
+    </p>
+  </div>
+
+  <script>
+    
+    // Toggle theme mode (light/dark)
+    const themeToggleButton = document.getElementById('theme-toggle-button');
+    themeToggleButton.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+    });
+
+    // Open and close dynamic island options
+    const dynamicIsland = document.getElementById('dynamicIsland');
+    dynamicIsland.addEventListener('click', () => {
+      dynamicIsland.classList.toggle('expanded');
+    });
+
+    // Meditation Alarm function
+    function setMeditationAlarm() {
+      alert('Meditation Alarm Set! 🙏');
+    }
+
+    // Play Bhajans function
+    function playBhajans() {
+      alert('Playing Bhajans... 🎵');
+    }
+
+    // Live Ram Mandir Darshan function
+    function liveRamMandirDarshan() {
+      alert('Starting Live Ram Mandir Darshan... 🌸');
+    }
+
+    // Voice-to-text functionality
+    const voiceToTextButton = document.getElementById('voice-to-text-button');
+    const textInput = document.getElementById('text-input');
+    
+    voiceToTextButton.addEventListener('click', () => {
+      const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+      recognition.lang = 'en-US';
+
+      recognition.onresult = function(event) {
+        const transcript = event.results[0][0].transcript;
+        textInput.value = transcript;
+      };
+
+      recognition.start();
+    });
+
+    // File upload functionality
+    const fileUpload = document.getElementById('file-upload');
+    fileUpload.addEventListener('change', function() {
+      const file = fileUpload.files[0];
+      if (file) {
+        alert(`File "${file.name}" selected!`);
+      }
+    });
+
+    // Close the popup
+    const closePopupButton = document.getElementById('close-popup');
+    closePopupButton.addEventListener('click', () => {
+      document.getElementById('popup').style.display = 'none';
+    });
+  </script>
+  <script>
+    // Check for browser support of SpeechRecognition
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+      alert("Speech recognition not supported on this browser.");
+    } else {
+      const recognition = new SpeechRecognition();
+      recognition.lang = 'en-US'; // Change to your desired language
+      recognition.interimResults = true;
+      recognition.maxAlternatives = 1;
+  
+      // Get the mic button and input field
+      const voiceToTextButton = document.getElementById('voice-to-text-button');
+      const textInput = document.getElementById('text-input');
+  
+      // Function to start speech recognition when clicking the mic button
+      voiceToTextButton.addEventListener('click', () => {
+        recognition.start();
+      });
+  
+      // Event handler when speech recognition returns results
+      recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript; // Get the transcript of the speech
+        textInput.value = transcript; // Set the text input to the speech result
+      };
+  
+      // Event handler for when speech recognition ends
+      recognition.onend = () => {
+        console.log("Speech recognition has ended.");
+      };
+  
+      // Handle errors (e.g., no speech detected)
+      recognition.onerror = (event) => {
+        console.error("Speech recognition error: ", event.error);
+      };
+    }
+  </script>
+  
+
+  <script src="script.js"></script>
+</body>
+
+</html>
